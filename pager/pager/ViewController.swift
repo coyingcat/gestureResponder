@@ -13,10 +13,10 @@ class ViewController: UIViewController {
 
     lazy var left = ContentCtrl(isLeft: true)
     lazy var right = ContentCtrl(isLeft: false)
-    lazy var greenView = GreenView(frame: CGRect(x: 125, y: 250, width: 200, height: 100))
+    lazy var greenView = GreenView(frame: greenFrame)
     
     
-    lazy var pagedController = PageCtrl(transitionStyle: .scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: [:])
+    lazy var pagedController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: [:])
     
     
     
@@ -52,8 +52,13 @@ class ViewController: UIViewController {
         
         greenView.backgroundColor = UIColor.green
         view.addSubview(greenView)
+        NotificationCenter.default.addObserver(self, selector: #selector(doGreen), name: .hitGreen, object: nil)
         
-        
+    }
+    
+    
+    @objc func doGreen(){
+        greenView.isHidden = true
     }
 
 }
@@ -106,15 +111,3 @@ class GreenView: UIView{
 }
 
 
-
-class PageCtrl: UIPageViewController{
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first{
-            let pt = touch.location(in: view)
-           
-            
-        }
-    }
-    
-}

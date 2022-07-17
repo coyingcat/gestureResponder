@@ -103,4 +103,20 @@ class ContentCtrl: UIViewController {
     }
     
 
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first, greenFrame.contains(touch.location(in: view)){
+            NotificationCenter.default.post(name: .hitGreen, object: nil)
+        }
+    }
+    
+}
+
+
+
+let greenFrame = CGRect(x: 125, y: 250, width: 200, height: 100)
+
+
+extension Notification.Name{
+    
+    static let hitGreen = Notification.Name("hitGreen")
 }
