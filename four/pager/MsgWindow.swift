@@ -8,18 +8,31 @@
 import UIKit
 
 class MsgView: UIView {
-
-    init() {
+    
+    let rect : CGRect = {
         let originX: CGFloat = 50
         let width = UIScreen.main.bounds.width - originX * 2
-        super.init(frame: CGRect(x: originX, y: 100, width: width, height: 150))
+        return CGRect(x: originX, y: 100, width: width, height: 400)
+    }()
+    
+    let btnRect = CGRect(x: 10, y: 10, width: 50, height: 50)
+
+    init() {
+        
+        super.init(frame: rect)
         clipsToBounds = true
         layer.cornerRadius = 8
-        backgroundColor = UIColor.cyan
+        backgroundColor = UIColor.clear
         layer.zPosition = CGFloat.infinity
         isHidden = true
         
-        let btn = UIButton(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+        let bg = UIView(frame: CGRect(origin: .zero, size: rect.size))
+        bg.backgroundColor = UIColor.cyan
+        bg.alpha = 0.5
+        addSubview(bg)
+        
+        
+        let btn = UIButton(frame: btnRect)
         btn.backgroundColor = UIColor.red
         btn.layer.cornerRadius = 8
         btn.backgroundColor = UIColor.white
@@ -50,6 +63,8 @@ class MsgView: UIView {
     }
     
     
-    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return btnRect.contains(point)
+    }
 
 }
