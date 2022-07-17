@@ -8,6 +8,7 @@
 import UIKit
 
 
+let msgWindow = MsgWindow()
 
 class ViewController: UIViewController {
 
@@ -32,23 +33,9 @@ class ViewController: UIViewController {
             pagedController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        
-        
         pagedController.dataSource = self
-        pagedController.view.isUserInteractionEnabled = true
-        for sub in pagedController.view.subviews{
-            sub.isUserInteractionEnabled = true
-            for secondSub in sub.subviews{
-                secondSub.isUserInteractionEnabled = true
-                for thirdSub in secondSub.subviews{
-                    thirdSub.isUserInteractionEnabled = true
-                }
-            }
-        }
-        
-        
         pagedController.setViewControllers([left], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
-        
+        msgWindow.show()
     }
     
 
