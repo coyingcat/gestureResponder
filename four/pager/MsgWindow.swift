@@ -46,22 +46,6 @@ class MsgView: UIView {
         isHidden = true
     }
     
-    func show(){
-        let scenes = UIApplication.shared.connectedScenes
-        for sce in scenes{
-            if let windowScene = sce as? UIWindowScene, windowScene.activationState == .foregroundActive , let win = windowScene.windows.first{
-                isHidden = false
-                win.addSubview(self)
-                return
-            }
-        }
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         return btnRect.contains(point)
