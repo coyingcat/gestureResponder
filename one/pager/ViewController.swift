@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.isUserInteractionEnabled = true
         addChild(pagedController)
         pagedController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pagedController.view)
@@ -36,18 +35,7 @@ class ViewController: UIViewController {
         
         
         pagedController.dataSource = self
-        pagedController.view.isUserInteractionEnabled = true
-        for sub in pagedController.view.subviews{
-            sub.isUserInteractionEnabled = true
-            for secondSub in sub.subviews{
-                secondSub.isUserInteractionEnabled = true
-                for thirdSub in secondSub.subviews{
-                    thirdSub.isUserInteractionEnabled = true
-                }
-            }
-        }
-        
-        
+
         pagedController.setViewControllers([left], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         
         greenView.backgroundColor = UIColor.green

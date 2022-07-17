@@ -13,8 +13,7 @@ class ViewController: UIViewController {
 
     lazy var left = ContentCtrl(isLeft: true)
     lazy var right = ContentCtrl(isLeft: false)
-    lazy var greenView = GreenView(frame: greenFrame)
-    
+
     
     lazy var pagedController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: [:])
     
@@ -50,16 +49,8 @@ class ViewController: UIViewController {
         
         pagedController.setViewControllers([left], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         
-        greenView.backgroundColor = UIColor.green
-        view.addSubview(greenView)
-        NotificationCenter.default.addObserver(self, selector: #selector(doGreen), name: .hitGreen, object: nil)
-        
     }
     
-    
-    @objc func doGreen(){
-        greenView.isHidden = true
-    }
 
 }
 
