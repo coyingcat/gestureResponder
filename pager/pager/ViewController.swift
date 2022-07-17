@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     lazy var greenView = GreenView(frame: CGRect(x: 125, y: 250, width: 200, height: 100))
     
     
-    lazy var pagedController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: [:])
+    lazy var pagedController = PageCtrl(transitionStyle: .scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: [:])
     
     
     
@@ -55,18 +55,6 @@ class ViewController: UIViewController {
         
         
     }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first{
-            let pt = touch.location(in: view)
-            if greenView.frame.contains(pt){
-                greenView.isHidden = true
-            }
-            
-        }
-    }
-
 
 }
 
@@ -114,5 +102,19 @@ class GreenView: UIView{
         return nil
     }
     
+    
+}
+
+
+
+class PageCtrl: UIPageViewController{
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first{
+            let pt = touch.location(in: view)
+           
+            
+        }
+    }
     
 }

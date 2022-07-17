@@ -91,6 +91,7 @@ class ContentCtrl: UIViewController {
         view.backgroundColor = UIColor.white
         view.isUserInteractionEnabled = true
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
         view.addSubview(label)
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor),
