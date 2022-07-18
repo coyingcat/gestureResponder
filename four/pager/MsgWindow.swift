@@ -41,6 +41,26 @@ class MsgView: UIView {
     }
     
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func show(){
+        // 找到 key window,
+        // 把视图，添加上去
+
+        let scenes = UIApplication.shared.connectedScenes
+
+        for sce in scenes{
+
+             if let windowScene = sce as? UIWindowScene, windowScene.activationState == .foregroundActive , let win = windowScene.windows.first{
+                   isHidden = false
+                   win.addSubview(self)
+                   return
+               }
+        }
+    }
     
     @objc func hide(){
         isHidden = true
